@@ -1,0 +1,271 @@
+// Grid setup
+// -----------
+// the grid will calculate dimensions based on these two variables
+// $grid-columns will inform the grid loops how many columns there should be.
+// $grid-gutter will inform the grid loops how big each column's gutters
+// should be.
+
+$grid-columns: 12 !default;
+$grid-gutter: 12px !default;
+
+$column-auto: true !default;
+$column-offset: true !default;
+$column-pull: true !default;
+$column-push: true !default;
+
+$self-align-horizontal: true !default;
+$self-align-vertical: true !default;
+
+$equalized: true !default;
+
+
+
+
+// Break points
+// -------------
+// 1. The namespace for that breakpoint ***required (xs, sm, md, lg, xl)
+// 2. The min-width measurement for the breakpoint for that namespace.
+//    * optional (567px, 768px, 992px, 1200px)
+
+$grid-breakpoints: (
+  (xs),
+  (sm, 567px),
+  (md, 768px),
+  (lg, 992px),
+  (xl, 1200px)
+) !default;
+
+
+// Calculate column size percentage
+// ---------------------------------
+
+@function get-col-percent($columns) {
+  @return ($columns / $grid-columns) * 100%;
+}
+
+
+// Spacing mixin to create uniform margin/padding
+// -----------------------------------------------
+
+@mixin spacing($value, $type: margin) {
+  #{ $type }-left: $value;
+  #{ $type }-right: $value;
+}
+
+
+.container {
+  @include spacing($grid-gutter, padding);
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: $container-width;
+}
+
+
+.row {
+  @include spacing((-$grid-gutter), margin);
+  @include flex-box;
+  @include flex(0, 1, auto);
+  @include flex-wrap(wrap);
+  @include flex-direction(row);
+
+  box-sizing: border-box;
+
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+
+}
+
+
+.col {
+  @include spacing($grid-gutter, padding);
+  @include flex(0, 0, 100%);
+
+  box-sizing: border-box;
+
+  max-width: 100%;
+}
+
+
+
+
+// Generate a set of grid column classes using a namespace
+// --------------------------------------------------------
+// .[namespace]-[number] for a column that covers a specific number of columns
+// .[namespace]-auto: include auto columns that don't need width specification
+// but fill the rest of the row width if not defined will be set to true
+// .offset-[namespace]-[number] for offseting a col a specificnumber of columns from left
+// .pull-[namespace]-[number] for pulling a col a specific number of columns
+//  from the right
+// .push-[namespace]-[number] for pushing a col a specific number of columns
+//  from the left
+
+@mixin create-grid($namespace) {
+
+  @for $i from 1 through $grid-columns {
+    .#{$namespace}-#{$i} {
+      @include flex-basis(get-col-percent($i));
+      max-width: get-col-percent($i);
+    }
+  }
+
+  @if ($column-auto) {
+    .#{$namespace}-auto {
+      @include flex(1, 1, 0%);
+    }
+  }
+
+  @if ($column-offset) {
+    @for $i from 1 through $grid-columns {
+      @if ($i != $grid-columns) {
+        .#{$namespace}-offset-#{$i} {
+          margin-left: get-col-percent($i);
+        }
+      }
+    }
+  }
+
+  @if ($column-pull) {
+    @for $i from 1 through $grid-columns {
+      .#{$namespace}-pull-#{$i} {
+        position: relative;
+        right: get-col-percent($i);
+      }
+    }
+  }
+
+  @if ($column-push) {
+    @for $i from 1 through $grid-columns {
+      .#{$namespace}-push-#{$i} {
+        position: relative;
+        left: get-col-percent($i);
+      }
+    }
+  }
+
+}
+
+
+
+
+// Generate a set of self horizontally aliged column classes
+// ----------------------------------------------------------
+// .[namespace]-start for left aligning a col
+// .[namespace]-center for center aligning a col
+// .[namespace]-end for right aligning a col
+
+@mixin create-align-horizontal($namespace) {
+
+  @if ($self-align-horizontal) {
+
+    .#{$namespace}-start {
+      margin-right: auto;
+    }
+
+    .#{$namespace}-center {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .#{$namespace}-end {
+      margin-left: auto;
+    }
+
+  }
+
+}
+
+
+
+
+// Generate a set of self vertically aliged column classes
+// --------------------------------------------------------
+// .[namespace]-top for top aligning a col
+// .[namespace]-middle for middle aligning a col
+// .[namespace]-bottom for bottom aligning a col
+
+@mixin create-align-vertical($namespace) {
+
+  @if ($self-align-horizontal) {
+
+    .#{$namespace}-top {
+      @include flex-align-self(flex-start);
+    }
+
+    .#{$namespace}-middle {
+      @include flex-align-self(center);
+    }
+
+    .#{$namespace}-bottom {
+      @include flex-align-self(flex-end);
+    }
+
+  }
+
+}
+
+
+
+
+// Generate a set equalized cells
+// -------------------------------
+// .[namespace]-cell for euqualizing the cells inside a row
+
+@mixin create-equalized($namespace) {
+
+  @if ($equalized) {
+
+    .#{$namespace}-cell {
+      @include flex-box;
+      // @include flex(1 0 auto);
+    }
+
+  }
+
+}
+
+
+
+
+// Build the grid in two steps, to help minimize file size
+// --------------------------------------------------------
+// for each namespace, wrap the col width/offset measurements in their
+// breakpoint media query
+
+@each $val in $grid-breakpoints {
+
+  @if (length($val) == 1 ) {
+
+    $breakpoint-name: nth($val, 1);
+
+    @include create-grid($breakpoint-name);
+
+    @include create-align-horizontal($breakpoint-name);
+
+    @include create-align-horizontal($breakpoint-name);
+
+    @include create-equalized($breakpoint-name);
+
+  } @else {
+
+    $breakpoint-name: nth($val, 1);
+    $screen-width: nth($val, 2);
+
+    @media only screen and (min-width: #{$screen-width}) {
+
+      @include create-grid($breakpoint-name);
+
+      @include create-align-horizontal($breakpoint-name);
+
+      @include create-align-vertical($breakpoint-name);
+
+      @include create-equalized($breakpoint-name);
+
+
+    }
+
+  }
+
+}
