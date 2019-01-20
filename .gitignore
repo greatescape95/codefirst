@@ -1,0 +1,17 @@
+# node modules
+/node_modules
+/backend/node_modules
+
+# mac
+.DS_Store
+
+# vs code
+.vscode/
+
+# helpers
+index2.html
+sass-natours/
+scss/
+
+#build folder
+dist/
