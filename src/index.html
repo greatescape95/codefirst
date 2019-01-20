@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900">
+        <link rel="stylesheet" href="assets/css/icon-font.css">
+        <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png">
+    </head>
+
+    <body>
+        <div class="navigation">
+            <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+            <label for="navi-toggle" class="navigation__button">
+                <span class="navigation__icon">&nbsp;</span>
+            </label>
+
+            <div class="navigation__background" id="navigation__background">&nbsp;</div>
+            <nav class="navigation__nav" id="navigation__nav">
+                <ul class="navigation__list">
+                    <li class="navigation__item"><a href="#" class="navigation__link">Home</a></li>
+                    <li class="navigation__item"><a href="#section-about" class="navigation__link">About</a></li>
+                    <li class="navigation__item"><a href="#section-services" class="navigation__link">Services</a></li>
+                    <li class="navigation__item"><a href="#section-contact" class="navigation__link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <header class="header">
+            <div class="header__logo-box">
+                <img src="" alt="Code first logo" class="header__logo">
+            </div>
+            <div class="header__text-box">
+                <h1 class="heading-primary">
+                    <span class="heading-primary--main">
+                            web development agency
+                    </span>
+                    <span class="heading-primary--sub">
+                            &#x23;make us your first tech choice.
+                    </span>
+                </h1>
+                <a href="#form" class="btn btn--white">Give us a shout</a>
+            </div>
+        </header>
+
+        <main>
+            <section id="section-about" class="section-about">
+                <div class="u-center-text u-margin-bottom-big">
+                    <h2 class="heading-secondary">
+                        Who we are?
+                    </h2>
+                    <p class="about">A group of software development professionals who are able to bring your ideas to your customers.
+                    </p>
+                </div>
+            </section>
+            <section id="section-services" class="section-features">
+                <div class="u-center-text u-margin-bottom-big">
+                    <h2 class="heading-secondary">
+                        What we do?
+                    </h2>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col xl-3 md-6 sm-12">
+                            <div class="feature-box">
+                                <i class="feature-box__icon icon-basic-display"></i>
+                                <h3 class="feature-box__header">Frontend development</h3>
+                                <p class="feature-box__text">Providing great websites for all major browsers, using modern client side stack.
+                                </p>
+                            </div>   
+                        </div>
+                        <div class="col xl-3 md-6 sm-12">
+                            <div class="feature-box">
+                                <i class="feature-box__icon icon-basic-server2"></i>
+                                <h3 class="feature-box__header">Backend development</h3>
+                                <p class="feature-box__text">Building fast and stable server side support for your web applications.
+                                </p>
+                            </div>  
+                        </div>
+                        <div class="col xl-3 md-6 sm-12">
+                            <div class="feature-box">
+                                <i class="feature-box__icon icon-basic-smartphone"></i>
+                                <h3 class="feature-box__header">Responsive web design</h3>
+                                <p class="feature-box__text">Making sure your site looks great on every device - from smartphones to large desktops.
+                                </p>
+                            </div>  
+                        </div>
+                        <div class="col xl-3 md-6 sm-12">
+                            <div class="feature-box">
+                                <i class="feature-box__icon icon-basic-gear"></i>
+                                <h3 class="feature-box__header">Progressive web apps</h3>
+                                <p class="feature-box__text">Give flawless application experience to your customers even when they are offline.
+                                </p>
+                            </div>  
+                        </div>
+                    </div>
+                </div>      
+            </section>
+
+            <section id="section-contact" class="section-contact">
+                <div class="u-center-text u-margin-bottom-big">
+                    <h2 class="heading-secondary">
+                        Let's get in touch :)
+                    </h2>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col sm-12">
+                            <div class="contact">
+                                <form class="form" id="form">
+                                    <div class="form__group">
+                                        <input type="text" class="form__input" placeholder="Your name" id="name" required>
+                                        <label for="name" class="form__label">Full name</label>
+                                    </div>
+                                    <div class="form__group">
+                                        <input type="email" class="form__input" placeholder="Your email" id="email" required>
+                                        <label for="email" class="form__label">E-mail</label>
+                                    </div>
+                                    <div class="form__group">
+                                        <textarea class="form__input" id="message" placeholder="Your message" rows="4" required></textarea>
+                                        <label for="message" class="form__label">Message</label>
+                                    </div>
+                                    <div class="form__group">
+                                        <input type="submit" class="btn btn--white" value="Get in touch">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer__logo-box">
+                <img class="footer__logo" src="" alt="FULL LOGO">  
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col xs-12 sm-6">
+                        <div class="footer__navigation">
+                            <ul class="footer__list">
+                                <li class="footer__item"><a href="#" class="footer__link">Home</a></li>
+                                <li class="footer__item"><a href="#section-about" class="footer__link">About</a></li>
+                                <li class="footer__item"><a href="#section-services" class="footer__link">Services</a></li>
+                                <li class="footer__item"><a href="#section-contact" class="footer__link">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col xs-12 sm-6">
+                        <div class="footer__info-box">
+                            <p>CODE FIRST</p>
+                            <p>Domovinskog rata 17</p>
+                            <p>21000 Split | Croatia</p>
+                            <p class="footer__copyright">
+                                Copyright &copy; Code First.
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </footer>
+    </body>
+</html>

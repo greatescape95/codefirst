@@ -1,0 +1,36 @@
+.section-features {
+    padding: 12rem 0;
+    background-image: linear-gradient(20deg,
+        rgba($color-primary, .8),
+        rgba($color-primary, 1));
+    background-size: cover;
+    transform: skewY(3deg);
+    margin-top: -10rem;
+    
+    & > * {
+        transform: skewY(-3deg);
+    }
+
+    @include respond(tab-port) {
+        padding: 8rem 0 10rem 0;
+    }
+}
+
+.section-contact {
+    padding: 20rem 0;
+    transform: skewY(3deg);
+    margin-top: -10rem;
+    border-bottom: 1px solid $color-black;
+    
+    & > * {
+        transform: skewY(-3deg);
+    }
+}
+
+.section-about {
+    padding: 12rem 0 15rem 0;
+
+    @include respond(tab-port) {
+        padding: 8rem 0 8rem 0;
+    }
+}

@@ -1,0 +1,76 @@
+.footer {
+    background-color: $color-grey-dark;
+    padding: 15rem 0 10rem 0;
+    margin-top: -12rem;
+    font-size: 1.5rem;
+    color: $color-white;
+
+    -webkit-clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+
+    @include respond(tab-land) {
+        padding-bottom: 5rem;
+    }
+
+    &__logo-box {
+        text-align: center;
+        margin-bottom: 8rem;
+    }
+
+    &__logo {
+        width: 15rem;
+        height: auto;
+    }
+
+    &__navigation {
+        border-top: 1px solid $color-white;
+        padding-top: 2rem;
+
+        @include respond(phone) {
+            padding-top: 3rem;
+        }
+    }
+
+    &__list {
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            font-weight: 300;
+            color: $color-white;
+            background-color: $color-grey-dark;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        &:hover,
+        &:active {
+            color: $color-primary;
+            box-shadow: 0 1rem 2rem rgba($color-black, .2);
+        }
+    }
+
+    &__info-box {
+        color: $color-grey;
+        padding-top: 2rem;
+        border-top: 1px solid $color-white;
+        text-align: right;
+        font-size: 1.6rem;
+        font-weight: 300;
+
+        @include respond(phone) {
+            margin-top: 3rem;
+            padding-top: 3rem;
+        }
+    }
+
+    &__copyright {
+        font-size: 1.4rem;
+        margin-top: 1rem;
+    }
+}
