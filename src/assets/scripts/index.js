@@ -10,15 +10,16 @@ import style from "../sass/main.scss";
 function handleFormRequestSubmit(event) {
     event.preventDefault();
 
-    let requestData = this.elements;
-    console.log("rqdta", requestData);
+    let form = this;
 
+    let requestData = form.elements;
 
     let request = new XMLHttpRequest();
 
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
-            console.log("recieved back");
+            showThankYouMessage();
+            form.reset();
         }
     }
 
@@ -33,6 +34,10 @@ function handleFormRequestSubmit(event) {
 
 function hideNavigation() {
     document.getElementById("navi-toggle").checked = false;
+}
+
+function showThankYouMessage() {
+    document.getElementById("form-message").style.display = "block";
 }
 
 (function setNavigationHandlers() {
