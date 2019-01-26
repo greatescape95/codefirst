@@ -5,16 +5,20 @@
     font-size: 1.5rem;
     color: $color-white;
 
-    -webkit-clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
     clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
 
     @include respond(tab-land) {
-        padding-bottom: 5rem;
+        padding: 11rem 0 5rem 0;
     }
 
     &__logo-box {
         text-align: center;
         margin-bottom: 8rem;
+
+        @include respond(tab-land) {
+            margin-bottom: 6rem;
+        }
     }
 
     &__logo {

@@ -61,6 +61,7 @@
         opacity: 0;
         width: 0;
         backface-visibility: hidden;
+        display:none;
       }
     
       &__list {
@@ -110,6 +111,7 @@
       &__checkbox:checked ~ &__nav {
         opacity: 1;
         width: 100%;
+        display: block;
       }
     
       //icon
