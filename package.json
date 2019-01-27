@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --port 5020 --mode development --open",
-    "build": "webpack --mode production",
+    "prod": "webpack --mode production",
     "webpack-test": "webpack",
     "watch:sass": "node-sass sass/main.scss src/assets/css/style.css -w",
     "devserver": "live-server",

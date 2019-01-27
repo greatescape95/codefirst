@@ -38,31 +38,29 @@ module.exports = {
             {
                 test: /\.html$/,
                 use: [
-                  {
-                    loader: "html-loader",
-                    options: { minimize: false }
-                  }
+                    {
+                        loader: "html-loader",
+                        options: { minimize: false }
+                    }
                 ]
-              },
+            },
             {
                 test: /\.(png|jpg|woff2|woff|ttf|eot|svg)$/,
                 use: [{
                     loader: 'url-loader',
-                    options: { 
+                    options: {
                         limit: 8000, // Convert images < 8kb to base64 strings
                         name: 'images/[name].[ext]'
-                    } 
+                    }
                 }]
             }
         ]
-    },  
+    },
     plugins: [
         new CopyWebpackPlugin([{
             from: "./src/assets",
             to: "assets"
-        }]
-
-        ),
+        }]),
         new HtmlWebPackPlugin({
             template: "./src/index.html",
             filename: "./index.html"
@@ -70,6 +68,6 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "[name].css",
             chunkFilename: "[id].css"
-          })
+        })
     ]
 }

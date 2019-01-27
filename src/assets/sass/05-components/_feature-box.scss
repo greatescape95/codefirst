@@ -32,6 +32,10 @@
         @include respond(small-desktop) {
             height: 3rem;
         }
+        
+        @include respond(tab-port) {
+            height: auto;
+        }
     }
 
     &__text {
@@ -42,7 +46,7 @@
             height: 4rem;
         }
 
-        @include respond(phone) {
+        @include respond(tab-port) {
             height: auto;
         }
     }

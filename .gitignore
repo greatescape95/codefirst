@@ -9,9 +9,7 @@
 .vscode/
 
 # helpers
-index2.html
-sass-natours/
-scss/
+helpers/
 
 #build folder
 dist/
